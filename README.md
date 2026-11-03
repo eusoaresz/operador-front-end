@@ -19,7 +19,7 @@ npm ci
 npm run dev
 ```
 
-Acesse **http://localhost:3001**. O back-end usa **http://127.0.0.1:3000**. Se necessário, copie `.env.example` para `.env.local` e ajuste `BACKEND_URL`. Reinicie o Next.js após mudar essa variável. Para build de produção, configure a variável antes de `npm run build`, pois os rewrites são gerados na compilação.
+Acesse **http://localhost:3001**. O back-end usa **http://localhost:3000**. Se necessário, copie `.env.example` para `.env.local` e ajuste `BACKEND_URL`. Reinicie o Next.js após mudar essa variável. Para build de produção, configure a variável antes de `npm run build`, pois os rewrites são gerados na compilação.
 
 Não há publicação nem credenciais embutidas. O Next.js encaminha `/api/v1/*` ao Express usando rewrite; o navegador chama a mesma origem e o JWT segue no cabeçalho Bearer. Não é preciso abrir CORS no Express para usar o painel.
 

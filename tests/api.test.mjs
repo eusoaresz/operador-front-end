@@ -88,3 +88,8 @@ test("horários usam Brasília independentemente do fuso do computador", () => {
   assert.equal(localInput("2026-11-02T10:30:00Z"), "2026-11-02T07:30");
   assert.equal(iso("2026-11-02T07:30"), "2026-11-02T07:30:00-03:00");
 });
+
+ test("rota ausente em servidor incorreto orienta revisar a conexão", async () => {
+ globalThis.fetch = async () => new Response("<html>Cannot POST /api/v1/auth/login</html>", {status:404,headers:{"Content-Type":"text/html"}});
+ await assert.rejects(api("auth/login","POST",{}), e => e.status === 404 && e.message.includes("BACKEND_URL"));
+ });

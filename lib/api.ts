@@ -48,7 +48,9 @@ export async function api(
     throw new ApiError(
       typeof data?.erro === "string"
         ? data.erro
-        : response.status >= 500
+        : response.status === 404 && !data
+          ? "O servidor configurado não possui esta rota. Confira BACKEND_URL e reinicie o front-end."
+          : response.status >= 500
           ? "Não foi possível acessar o servidor. Confira se o back-end está iniciado."
           : "Não foi possível concluir a ação.",
       response.status,
